@@ -88,7 +88,7 @@ public class loginPageTrainingTest extends baseClass{
 
   public static void getGemmaRole() {
     driver.findElement(By.xpath(propertyRead.getProperty("x_roleArrow"))).click();
-    waitHelper.hardWait(1000);
+    //waitHelper.hardWait(1000);
     driver.findElement(getTestSuperuserAndSuperviserRole()).click();
     waitHelper.hardWait(1000);
     logger.info("User role selected");
