@@ -14,6 +14,7 @@ import java.util.logging.Level;
 
 import static com.gemma.pageObject.callPage.getAccessUserMenu;
 import static com.gemma.utils.PropertyFileReader.*;
+import static com.gemma.utils.encryptDecrypt.*;
 
 
 public class loginPageTrainingTest extends baseClass{
@@ -72,9 +73,12 @@ public class loginPageTrainingTest extends baseClass{
 
   public static void accessGemmaAccount() {
 
-    driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getUsername());
+
+    //driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getUsername());
+    driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getEncryptDecryptUsername(encryptedData1,decryptedData1));
     logger.info("Username is correctly entered");
-    driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getPassword());
+    //driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getPassword());
+    driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getEncryptDecryptPassword(encryptedData2,decryptedData2));
     logger.info("Password is correctly entered");
     driver.findElement(getStartSession()).click();
     waitHelper.hardWait(1000);
