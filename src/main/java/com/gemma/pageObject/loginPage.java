@@ -70,10 +70,10 @@ public class loginPage  extends baseClass{
     public static void accessGemmaAccount() {
 
         //driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getUsername());
-        driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getEncryptDecryptUsername(encryptedData1,decryptedData1));
+        driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getDecryptUsername(decryptedData1));
         logger.info("Username is correctly entered");
         //driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getPassword());
-        driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getEncryptDecryptPassword(encryptedData2,decryptedData2));
+        driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getDecryptPassword(decryptedData2));
         logger.info("Password is correctly entered");
         driver.findElement(getStartSession()).click();
         waitHelper.hardWait(1000);
@@ -109,10 +109,10 @@ public class loginPage  extends baseClass{
 
             case "dispecer":
                 //driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getUsername());
-                driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getEncryptDecryptUsername(encryptedData1,decryptedData1));
+                driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getDecryptUsername(decryptedData1));
                 logger.info("Username is correctly entered");
                 //driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getPassword());
-                driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getEncryptDecryptPassword(encryptedData2,decryptedData2));
+                driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getDecryptPassword(decryptedData2));
                 logger.info("Password is correctly entered");
                 driver.findElement(getStartSession()).click();
                 waitHelper.hardWait(1000);
@@ -140,10 +140,10 @@ public class loginPage  extends baseClass{
 
             case "receptor":
                 //driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getUsername());
-                driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getEncryptDecryptUsername(encryptedData1,decryptedData1));
+                driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getDecryptUsername(decryptedData1));
                 logger.info("Username is correctly entered");
                 //driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getPassword());
-                driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getEncryptDecryptPassword(encryptedData2,decryptedData2));
+                driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getDecryptPassword(decryptedData2));
                 logger.info("Password is correctly entered");
                 driver.findElement(getStartSession()).click();
                 waitHelper.hardWait(1000);
@@ -171,10 +171,10 @@ public class loginPage  extends baseClass{
 
             case "TestSuperuserNoSuperviser":
                 //driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getUsername());
-                driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getEncryptDecryptUsername(encryptedData1,decryptedData1));
+                driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getDecryptUsername(decryptedData1));
                 logger.info("Username is correctly entered");
                 //driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getPassword());
-                driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getEncryptDecryptPassword(encryptedData2,decryptedData2));
+                driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getDecryptPassword(decryptedData2));
                 logger.info("Password is correctly entered");
                 driver.findElement(getStartSession()).click();
                 waitHelper.hardWait(1000);
@@ -202,10 +202,10 @@ public class loginPage  extends baseClass{
 
             case "TestSuperuserAndSuperviser":
                 //driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getUsername());
-                driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getEncryptDecryptUsername(encryptedData1,decryptedData1));
+                driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getDecryptUsername(decryptedData1));
                 logger.info("Username is correctly entered");
                 //driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getPassword());
-                driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getEncryptDecryptPassword(encryptedData2,decryptedData2));
+                driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getDecryptPassword(decryptedData2));
                 logger.info("Password is correctly entered");
                 driver.findElement(getStartSession()).click();
                 waitHelper.hardWait(1000);
@@ -266,7 +266,7 @@ public class loginPage  extends baseClass{
         driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys("Diana_c");
         logger.info("Username is correctly entered");
         //driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getPassword());
-        driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getEncryptDecryptPassword(encryptedData2,decryptedData2));
+        driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getDecryptPassword(decryptedData2));
         logger.info("Password is correctly entered");
         driver.findElement(getStartSession()).click();
         waitHelper.hardWait(1000);

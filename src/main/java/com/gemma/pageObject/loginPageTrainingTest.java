@@ -1,5 +1,6 @@
 package com.gemma.pageObject;
 
+import com.gemma.utils.encryptDecrypt;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -75,10 +76,10 @@ public class loginPageTrainingTest extends baseClass{
 
 
     //driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getUsername());
-    driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getEncryptDecryptUsername(encryptedData1,decryptedData1));
+    driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getDecryptUsername(decryptedData1));
     logger.info("Username is correctly entered");
     //driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getPassword());
-    driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getEncryptDecryptPassword(encryptedData2,decryptedData2));
+    driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getDecryptPassword(decryptedData2));
     logger.info("Password is correctly entered");
     driver.findElement(getStartSession()).click();
     waitHelper.hardWait(1000);
@@ -125,6 +126,8 @@ public class loginPageTrainingTest extends baseClass{
     driver.findElement(By.linkText("Dark Theme")).click();
     logger.info("Theme changed to dark mode");
   }
+
+
 
 
 
