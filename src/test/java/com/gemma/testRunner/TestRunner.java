@@ -14,7 +14,7 @@ import java.util.Objects;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features={"C:\\Users\\a803848\\TestAutomationGemma\\src\\test\\resources\\features\\IncidentCreation.feature"},
+        features={"D:\\GEMMA\\GemmaTestTraining\\src\\test\\resources\\features\\createCallForTrainingTest.feature"},
         glue={"com.gemma.steps"},
         plugin={"pretty","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" },
         dryRun = false,

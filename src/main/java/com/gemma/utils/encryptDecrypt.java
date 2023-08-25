@@ -7,28 +7,20 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.Properties;
-
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-
 import static com.gemma.utils.PropertyFileReader.*;
 
 public class encryptDecrypt {
 
   private static byte[] key;
-  private static final int KEY_SIZE = 128;
-  private static final int DATA_LENGTH = 128;
-  private static Cipher encryptionCipher;
   public static String decryptedData1;
   public static String decryptedData2;
 
-  public static String encryptedData1;
-
-  public static String encryptedData2;
+  public static String decryptedData3;
+  public static String decryptedData4;
 
   static Properties propertyReader;
+  private static SecretKeySpec secretKey;
 
   static {
     try {
@@ -37,11 +29,6 @@ public class encryptDecrypt {
       throw new RuntimeException(e);
     }
   }
-
-
-  private static SecretKeySpec secretKey;
-
-
 
   public static void init(final String myKey) {
     MessageDigest sha = null;
@@ -83,17 +70,6 @@ public class encryptDecrypt {
     return null;
   }
 
-
-  public static CharSequence getEncryptDecryptUsername(String encryptedData1,String decryptedData1) {
-
-    final String secretKey = "tTdC6675#";
-
-    decryptedData1 = encryptDecrypt.decrypt(getUsername(), secretKey) ;
-    System.out.println(decryptedData1);
-
-    return decryptedData1;
-  }
-
   public static void main(String args[]) {
 
     final String secretKey = "tTdC6675#";
@@ -105,18 +81,47 @@ public class encryptDecrypt {
     System.out.println(originalString);
     System.out.println(encryptedString);
     System.out.println(decryptedString);
-
-
   }
 
-  public static CharSequence getEncryptDecryptPassword(String encryptedData2,String decryptedData2) {
+  public static CharSequence getDecryptUsername(String decryptedData1) {
+
+    final String secretKey = "tTdC6675#";
+
+    decryptedData1 = encryptDecrypt.decrypt(getUsername(), secretKey) ;
+    //System.out.println(decryptedData1);
+
+    return decryptedData1;
+  }
+
+  public static CharSequence getDecryptPassword(String decryptedData2) {
 
     final String secretKey = "tTdC6675#";
 
     decryptedData2 = encryptDecrypt.decrypt(getPassword(), secretKey) ;
-    System.out.println(decryptedData2);
+    //System.out.println(decryptedData2);
 
 
     return decryptedData2;
+  }
+
+  public static CharSequence getDecryptOracleUsername(String decryptedData3) {
+
+    final String secretKey = "tTdC6675#";
+
+    decryptedData3 = encryptDecrypt.decrypt(getOracleUsername(), secretKey) ;
+    //System.out.println(decryptedData3);
+
+    return decryptedData3;
+  }
+
+  public static CharSequence getDecryptOraclePassword(String decryptedData4) {
+
+    final String secretKey = "tTdC6675#";
+
+    decryptedData4 = encryptDecrypt.decrypt(getOraclePassword(), secretKey) ;
+    //System.out.println(decryptedData4);
+
+
+    return decryptedData4;
   }
 }

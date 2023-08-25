@@ -54,6 +54,14 @@ public class PropertyFileReader  {
         return propertyReader.getProperty("password");
     }
 
+    public static String getOracleUsername() {
+        return propertyReader.getProperty("oracleUsername");
+    }
+
+    public static String getOraclePassword() {
+        return propertyReader.getProperty("oraclePassword");
+    }
+
     public static String getWebsite() {
         return propertyReader.getProperty("gemmaURL");
     }
