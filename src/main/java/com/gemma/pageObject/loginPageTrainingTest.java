@@ -1,6 +1,5 @@
 package com.gemma.pageObject;
 
-import com.gemma.utils.encryptDecrypt;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,10 +9,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.gemma.utils.waitHelper;
 import java.util.Properties;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
-
-import static com.gemma.pageObject.callPage.getAccessUserMenu;
+import static com.gemma.pageObject.callPage.*;
 import static com.gemma.utils.PropertyFileReader.*;
 import static com.gemma.utils.encryptDecrypt.*;
 
@@ -45,7 +44,6 @@ public class loginPageTrainingTest extends baseClass{
   public loginPageTrainingTest() throws Exception {
   }
 
-
   public static By getStartSession() {
     return By.xpath(propertyRead.getProperty("x_startSessionButton"));
   }
@@ -71,14 +69,10 @@ public class loginPageTrainingTest extends baseClass{
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
-
   public static void accessGemmaAccount() {
 
-
-    //driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getUsername());
     driver.findElement(By.xpath(propertyRead.getProperty("x_username"))).sendKeys(getDecryptUsername(decryptedData1));
     logger.info("Username is correctly entered");
-    //driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getPassword());
     driver.findElement(By.xpath(propertyRead.getProperty("x_password"))).sendKeys(getDecryptPassword(decryptedData2));
     logger.info("Password is correctly entered");
     driver.findElement(getStartSession()).click();
@@ -107,29 +101,46 @@ public class loginPageTrainingTest extends baseClass{
     }
   }
 
-  public static void changeBackgroundColorTrainingTest() {
-
+  public static void getCallTraining() {
     waitHelper.hardWait(5000);
     driver.findElement(getAccessUserMenu()).click();
     waitHelper.hardWait(4000);
     Actions actTheme = new Actions(driver);
-    WebElement theme = driver.findElement(By.linkText("Change Theme"));
-    actTheme.moveToElement(theme).perform();
+    WebElement callCreate = driver.findElement(getCreateMenu());
+    actTheme.moveToElement(callCreate).perform();
     waitHelper.hardWait(4000);
-    driver.findElement(By.linkText("Light Theme")).click();
-    logger.info("Theme changed to light mode");
-    driver.findElement(getAccessUserMenu()).click();
-    waitHelper.hardWait(4000);
-    WebElement theme1 = driver.findElement(By.linkText("Change Theme"));
-    actTheme.moveToElement(theme1).perform();
-    waitHelper.hardWait(4000);
-    driver.findElement(By.linkText("Dark Theme")).click();
-    logger.info("Theme changed to dark mode");
+    driver.findElement(By.xpath(propertyRead.getProperty("x_callButton"))).click();
+    waitHelper.hardWait(5000);
+    logger.info("The call file is opened");
+
   }
 
+  public static int getPhoneNumber() {
+    Random objGenerator = new Random();
+    int finalPhoneNumber = Integer.parseInt("07" + objGenerator.nextInt(90000000));
+    System.out.println("Random No : " + finalPhoneNumber);
+    return finalPhoneNumber;
+  }
 
+  public static void getData() {
+    waitHelper.hardWait(2000);
+    driver.findElement(By.xpath(propertyRead.getProperty("x_priorityArrow"))).click();
+    waitHelper.hardWait(500);
+    driver.findElement(By.xpath(propertyRead.getProperty("x_highPrioritySelect"))).click();
+    logger.info("Priority was selected");
 
+    //select call type
+    driver.findElement(By.xpath(propertyRead.getProperty("x_callTypeArrow"))).click();
+    waitHelper.hardWait(500);
+    driver.findElement(By.xpath(propertyRead.getProperty("x_callTypeButton"))).click();
 
+    //enter phone number
+    String phoneNumber = Integer.toString(getPhoneNumber());
+    driver.findElement(By.xpath(propertyRead.getProperty("x_phoneNumberBoxInput"))).sendKeys("+40" + phoneNumber + '\n');
+    logger.info("Phone number was correctly entered");
 
-
+    //enter name
+    waitHelper.hardWait(2000);
+    driver.findElement(getKeyDataTab()).click();
+  }
 }

@@ -7,6 +7,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import static com.gemma.pageObject.loginPageTrainingTest.getCallTraining;
+import static com.gemma.pageObject.loginPageTrainingTest.getData;
 
 public class trainingTestLoginGemmaSteps {
   private static Logger logger = LoggerFactory.getLogger(loginToGemmaStep.class);
@@ -16,7 +18,7 @@ public class trainingTestLoginGemmaSteps {
     loginPageTrainingTest.loginToGemmaTraining();
   }
 
-  @When("I am able to enter username and password for test training")
+  @And("I am able to enter username and password for test training")
   public void iAmAbleToEnterUsernameAndPassword() {
     loginPageTrainingTest.accessGemmaAccount();
   }
@@ -25,6 +27,10 @@ public class trainingTestLoginGemmaSteps {
   public void iAmAbleToEnterTheRole() {loginPageTrainingTest.getGemmaRole();
   }
 
-  @Then("I Change background color for test training")
-  public void iChangeBackgroundColorForTestTraining() {loginPageTrainingTest.changeBackgroundColorTrainingTest();}
+  @When("I Create a call file for training test")
+  public void iCreateACallFileForTrainingTest() { getCallTraining();
+  }
+
+  @Then("I enter the data")
+  public void iEnterTheVictimData() { getData();}
 }

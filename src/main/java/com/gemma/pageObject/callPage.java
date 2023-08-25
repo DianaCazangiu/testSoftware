@@ -8,6 +8,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.Properties;
+import java.util.Random;
+
 import static com.gemma.utils.PropertyFileReader.getPropertyFile;
 
 
@@ -54,6 +56,7 @@ public class callPage extends baseClass{
     }
 
 
+
     public static void getCall() {
         waitHelper.hardWait(5000);
         driver.findElement(getAccessUserMenu()).click();
@@ -93,7 +96,7 @@ public class callPage extends baseClass{
                 //enter name
                 waitHelper.hardWait(2000);
                 driver.findElement(getKeyDataTab()).click();
-                driver.findElement(getMoreInfoTab()).click();
+                //driver.findElement(getMoreInfoTab()).click();
                 driver.findElement(By.xpath(propertyRead.getProperty("x_givenNameBoxInput"))).sendKeys("Paul");
                 driver.findElement(By.xpath(propertyRead.getProperty("x_familyNameBoxInput"))).sendKeys("Georgescu");
                 driver.findElement(By.xpath(propertyRead.getProperty("x_ageBoxInput"))).sendKeys("74");
@@ -163,7 +166,7 @@ public class callPage extends baseClass{
                 //enter name
                 waitHelper.hardWait(2000);
                 driver.findElement(getKeyDataTab()).click();
-                driver.findElement(getMoreInfoTab()).click();
+                //driver.findElement(getMoreInfoTab()).click();
                 driver.findElement(By.xpath(propertyRead.getProperty("x_givenNameBoxInput"))).sendKeys("Mariana");
                 driver.findElement(By.xpath(propertyRead.getProperty("x_familyNameBoxInput"))).sendKeys("Ionescu");
                 driver.findElement(By.xpath(propertyRead.getProperty("x_ageBoxInput"))).sendKeys("35");
@@ -233,7 +236,15 @@ public class callPage extends baseClass{
                 //enter name
                 waitHelper.hardWait(2000);
                 driver.findElement(getKeyDataTab()).click();
-                driver.findElement(getMoreInfoTab()).click();
+
+                waitHelper.hardWait(1000);
+                WebElement tabWho = driver.findElement(By.xpath(propertyRead.getProperty("x_WhoTab")));
+
+                JavascriptExecutor js3 = (JavascriptExecutor) driver;
+                //js.executeScript(Script,Arguments);
+                js3.executeScript("arguments[0].scrollIntoView();", tabWho);
+
+                //driver.findElement(By.xpath(propertyRead.getProperty("x_DataTab"))).click();
                 driver.findElement(By.xpath(propertyRead.getProperty("x_givenNameBoxInput"))).sendKeys("Oliver");
                 driver.findElement(By.xpath(propertyRead.getProperty("x_familyNameBoxInput"))).sendKeys("Weimer");
                 driver.findElement(By.xpath(propertyRead.getProperty("x_ageBoxInput"))).sendKeys("58");
@@ -338,6 +349,17 @@ public class callPage extends baseClass{
         actions.contextClick(mediumPriorityCall).perform();
         driver.findElement(By.xpath(propertyRead.getProperty("x_followButton"))).click();
     }
+
+    public static int getPhoneNumber() {
+        Random objGenerator = new Random();
+        //int phoneNumber = objGenerator.nextInt(90000000);
+        int finalPhoneNumber = Integer.parseInt("07" + objGenerator.nextInt(90000000));
+        System.out.println("Random No : " + finalPhoneNumber);
+        return finalPhoneNumber;
+    }
+
+
+
 
 
 
